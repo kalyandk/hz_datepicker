@@ -1,0 +1,28 @@
+<h1>DATE PICKER</h1><!-- You can now use the library component in app.component.html -->
+
+<div class="carousel">
+  <button (click)="slide($event)" class="carousel-button previous" id="previous"><</button>
+  <div class="wrapper">
+    <div class="carousel-images">
+      <button 
+      class="date" 
+      *ngFor="let item of items" 
+      (click)="selectDate(item.date)" 
+      [disabled]="item.weekDay === 7"
+      [ngClass]="{ 'is-active ' : item.date === selectedDate}">
+        <span style="display: block; font-size: 14px; line-height: 17px; letter-spacing: 0.0168em;">{{item.date | date: 'E'}}</span>
+        <span style="font-size: 29.3023px; line-height: 35px; letter-spacing: 0.0168em;">{{item.date | date: 'd'}}</span>
+        <div class="month-separator" *ngIf="item.month">{{item.month}}</div>
+        <span class="today-mark" *ngIf="today === item.date"></span>
+      </button>
+    </div>
+  </div>
+  <button (click)="slide($event)" class="carousel-button next" id="next">></button>
+</div>
+<br>
+<select (change)="selectMonth($event)">
+  <option>Select month</option>
+  <option *ngFor="let month of months; let i = index" [value]="i">{{month.name}}</option>
+</select>
+&nbsp;
+<button (click)="goToToday()">Back to Today</button>

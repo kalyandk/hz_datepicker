@@ -1,0 +1,82 @@
+
+button:disabled,
+button[disabled]{
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 270px;
+  height: 90px;
+}
+
+.carousel-button {
+  width: 20px;
+  height: 20px;
+  margin: 0px 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.carousel-images {
+  display: flex;
+  align-items: center;
+  transform: translateX(0);
+  transition: transform 0.5s ease-out;
+}
+
+.carousel-images .date{
+  border: none;
+  position: relative;
+  min-width: 51px;
+  height: 60px;
+  margin-right: 10px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  color: #343434;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.is-active {
+  background-color: #207c80 !important;
+  color: #fff !important;
+  transition: all .5s ease 0s;
+}
+
+.month-separator {
+  left: 0px;
+  top: 48px;
+  position: absolute;
+  width: 51px;
+  height: 12px;
+  background-color: #207c80;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0px 0px 8px 8px;
+
+}
+
+.opaque {
+  opacity: 0.5;
+}
+
+.today-mark {
+  width: 8px;
+  height: 8px;
+  background-color: #44a9a9;
+  position: absolute;
+  border-radius: 50px;
+  top: 66px;
+  left: 20px;
+}
