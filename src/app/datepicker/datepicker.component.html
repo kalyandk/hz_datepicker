@@ -25,4 +25,4 @@
   <option *ngFor="let month of months; let i = index" [value]="i">{{month.name}}</option>
 </select>
 &nbsp;
-<button (click)="goToToday()">Back to Today</button>
+<button (click)="goToToday(); goToBegin()">Back to Today</button>

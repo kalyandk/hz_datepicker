@@ -32,17 +32,16 @@ export class DatepickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.goToToday();
+
     this.carouselDates = document.querySelector('.carousel-images');
-    setTimeout(() => {
-      this.numberOfDays = document.querySelectorAll('.carousel-images .date').length;
-    }, 100)
+    // this.numberOfDays = document.querySelectorAll('.carousel-images .date').length;
     
     let year = new Date().getFullYear();
     let isLeap =  year % 400 === 0;
 
     if(isLeap) this.months[1].days = 29;
 
-    this.goToToday();
     // let month = this.months[new Date().getMonth()];
 
     // // Creating an array with specified date range
@@ -81,7 +80,7 @@ export class DatepickerComponent implements OnInit {
         this.translateX += 60;
       }
     } else {
-      if (this.dateIndex !== this.numberOfDays - 3) {
+      if (this.dateIndex !== this.numberOfDays) {
         this.dateIndex++;
         this.translateX -= 60;
       }
@@ -100,7 +99,7 @@ export class DatepickerComponent implements OnInit {
 
   goToToday() {
     let today = new Date()
-    let nextThirty = new Date().setDate(today.getDate()+30)
+    let nextThirty = new Date().setDate(today.getDate()+59)
 
     // Creating an array with specified date range
     this.items = this.getDates(
@@ -108,8 +107,11 @@ export class DatepickerComponent implements OnInit {
       new Date(nextThirty)
     );
 
+    this.numberOfDays = this.items.length;
+
     this.selectedDate = this.items[0].date;
-    this.goToBegin();
+    // this.goToBegin();
+    // console.log(this.items)
   }
 
   selectMonth(e) {
@@ -121,10 +123,13 @@ export class DatepickerComponent implements OnInit {
       new Date(`${year}-${month.code}-${month.days}T14:34:19.579Z`)
     );
 
+    this.numberOfDays = this.items.length;
     this.goToBegin();
     setTimeout(() => {
       this.numberOfDays = document.querySelectorAll('.carousel-images .date').length;
     }, 100)
+
+    // console.log(this.items)
   }
 
   selectDate(date) {
